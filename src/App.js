@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App(props) {
-  const Test = (a) => {
-    console.log(a);
-  }
+
+  // const Test = (a) => {
+  //   console.log(a);
+  // }
+  // const [test, setTest] = useState(() => Test('abc'))
+
   const [state, setState] = useState(props.counter)
-  const [test, setTest] = useState(() => Test('abc'))
+  const [test, setTest] = useState(0)
+
+  useEffect(() => {
+    document.title = `Counter ${state}`
+    console.log('change');
+  }, [])
+
 
   const onChangeCounter = (e) => {
     setState(state => state + e)
@@ -30,6 +39,7 @@ function App(props) {
         <button onClick={() => onChangeCounter(-1)}> DEC</button>
         <button onClick={() => onResetCounter()}>RESET</button>
         <button onClick={() => onRandomCounter()}>RANDOM</button>
+        <button onClick={() => setTest(Math.random())}>CHANGE</button>
 
       </div >
     </div >
