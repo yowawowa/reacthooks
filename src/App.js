@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -26,13 +26,24 @@ export default function App(props) {
     console.log('change');
   }, [state])
 
+  const expensiveCount = useMemo(() => {
+    return (state * Math.random() + state * Math.random()) ** 2
+  }, [state])
+
   const onChangeCounter = (e) => {
     setState(state => state + e)
   }
 
+  const showState = useCallback(() => {
+  }, [state])
+
+
   const onResetCounter = () => {
     setState(props.counter)
   }
+
+  const sameRef = useRef(0)
+
 
   const onRandomCounter = () => {
     const min = -100
@@ -60,6 +71,7 @@ export default function App(props) {
               <Button onClick={() => onResetCounter()}>RESET</Button>
               <Button onClick={() => onRandomCounter()}>RANDOM</Button>
               <Button onClick={() => setTest(Math.random())}>TEST</Button>
+              <Button onClick={() => sameRef.current++}>{sameRef.current}</Button>
             </ButtonGroup>
           </CardActions>
         </Card>
