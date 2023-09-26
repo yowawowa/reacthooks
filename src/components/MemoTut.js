@@ -25,7 +25,7 @@ export default function MemoTut() {
     const complexComputed = (e) => {
         console.log('computing');
         let i = 0
-        while (i < 1000000000) i++
+        while (i < 100) i++
         return e * 2
     }
 

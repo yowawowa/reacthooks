@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import './components/MemoTut'
+import './components/CallbackTut'
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,6 +13,7 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import { CssBaseline } from '@mui/material';
 import MemoTut from './components/MemoTut';
+import CallbackTut from './components/CallbackTut';
 
 export default function App(props) {
   const [state, setState] = useState(props.counter)
@@ -77,7 +79,7 @@ export default function App(props) {
               <Button onClick={() => onChangeCounter(1)}>INC</Button>
               <Button onClick={() => onChangeCounter(-1)}>DEC</Button>
               <Button onClick={() => onResetCounter()}>RESET</Button>
-              <Button onClick={() => onRandomCounter()}>RANDOM</Button>-
+              <Button onClick={() => onRandomCounter()}>RANDOM</Button>
               <Button onClick={handleFocus}>FOCUS</Button>
               <Button disabled onClick={() => setTest(Math.random())}>TEST</Button>
             </ButtonGroup>
@@ -85,6 +87,7 @@ export default function App(props) {
         </Card>
       </Container>
       <MemoTut />
+      <CallbackTut />
     </React.Fragment >
 
 
